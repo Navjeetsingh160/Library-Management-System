@@ -23,6 +23,7 @@ namespace Library_Management_System.Controllers
             return View(books);
         }
 
+
         public async Task<IActionResult> Details(int id)
         {
             var book = await _bookService.GetBookById(id);
