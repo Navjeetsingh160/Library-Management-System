@@ -1,0 +1,167 @@
+﻿@model List<Library_Management_System.DTO.BookDTO>
+
+@{
+    ViewData["Title"] = "Books List";
+}
+
+@{
+    Layout = null;
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-4 text-primary mb-4">Books List</h1>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+           @*  <form class="d-flex" method="get" action="@Url.Action("Search", "Books")">
+                <div class="searchbar">
+                    <input class="search_input" type="text" name="title" placeholder="Search by Title...">
+                    <button type="submit" class="btn btn-link search_icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form> *@
+        </div>
+       @*  <div class="col text-end">
+            <a href="@Url.Action("Create", "Books")" class="btn btn-primary btn-lg">
+                <i class="bi bi-plus-circle"></i> Add New Book
+            </a>
+        </div> *@
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">ISBN</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var book in Model)
+                            {
+                                <tr>
+                                    <td>@book.Title</td>
+                                    <td>@book.Author</td>
+                                    <td>@book.ISBN</td>
+                                    <td>@book.Quantity</td>
+                                    <td class="text-center">
+                                        <div class="btn-group" role="group">
+                                            <a href="@Url.Action("IssueBook", "Books", new { id = book.Id })" class="btn btn-success btn-sm">
+                                                <i class="bi bi-eye"></i> Issue Book
+                                            </a>
+                                           @*  <a href="@Url.Action("Edit", "Books", new { id = book.Id })" class="btn btn-warning btn-sm">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </a>
+                                            <a href="@Url.Action("Delete", "Books", new { id = book.Id })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this book?')">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </a> *@
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">No books found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Optional Custom CSS for further design enhancements -->
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+        transition: all 0.3s ease;
+    }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    body, html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+     /*    background: #e74c3c !important; */
+    }
+
+    .searchbar {
+        margin-bottom: auto;
+        margin-top: auto;
+        height: 60px;
+        background-color: #353b48;
+        border-radius: 30px;
+        padding: 10px;
+    }
+
+    .search_input {
+        color: white;
+        border: 0;
+        outline: 0;
+        background: none;
+        width: 0;
+        caret-color: transparent;
+        line-height: 40px;
+        transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input {
+        padding: 0 10px;
+        width: 450px;
+        caret-color: red;
+        transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon {
+        background: white;
+        color: #e74c3c;
+    }
+
+    .search_icon {
+        height: 40px;
+        width: 40px;
+        float: right;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+    }
+</style>

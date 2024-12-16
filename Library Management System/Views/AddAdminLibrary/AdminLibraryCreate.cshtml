@@ -1,0 +1,266 @@
+﻿@{
+    Layout = null;
+}
+
+@model Library_Management_System.DTO.UserDTO
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style data-styles="">
+        ion-icon {
+            visibility: hidden;
+        }
+
+        .hydrated {
+            visibility: inherit;
+        }
+
+        a.button {
+            color: red;
+            background-color: rebeccapurple;
+        }
+
+        button#form-open {
+            color: red;
+            background-color: rebeccapurple;
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website with Login & Registration Form</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+<body>
+    <section class="home">
+        <!-- Header -->
+        <div class="button_nav">
+            <div class="navigation">
+                <ul>
+                    <li class="list active">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="home" role="img" class="md hydrated" aria-label="home"></ion-icon>
+                            </span>
+                            <span class="text">Home</span>
+                            <span class="circle"></span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="person" role="img" class="md hydrated" aria-label="person"></ion-icon>
+                            </span>
+                            <span class="text">Profile</span>
+                            <span class="circle"></span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="chatbubble" role="img" class="md hydrated" aria-label="chatbubble"></ion-icon>
+                            </span>
+                            <span class="text">Message</span>
+                            <span class="circle"></span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="camera" role="img" class="md hydrated" aria-label="camera"></ion-icon>
+                            </span>
+                            <span class="text">Photos</span>
+                            <span class="circle"></span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="settings" role="img" class="md hydrated" aria-label="settings"></ion-icon>
+                            </span>
+                            <span class="text">Settings</span>
+                            <span class="circle"></span>
+                        </a>
+                    </li>
+                    <div class="indicator"></div>
+                </ul>
+            </div>
+            <button class="button" id="form-open">Login</button>
+            <!-- Using Tag Helpers -->
+            <a class="button" asp-controller="AddAdminLibrary" asp-action="TeacherLogin">Teacher Login</a>
+         @*    <a class="button" asp-controller="Subject" asp-action="Create">Subject Add</a> *@
+        </div>
+
+        <div class="form_container" style="display: none;">
+            <i class="uil uil-times form_close"></i>
+            <!-- Login Form -->
+            <div class="wrapper"> 
+                <div class="title-text">
+                    <div class="title login">Student Login</div>
+                    <div class="title signup">Student Signup</div>
+                </div>
+                <div class="form-container">
+                    <div class="slide-controls">
+                        <input type="radio" name="slide" id="login" checked>
+                        <input type="radio" name="slide" id="signup">
+                        <label for="login" class="slide login">Login</label>
+                        <label for="signup" class="slide signup">Signup</label>
+                        <div class="slider-tab"></div>
+                    </div>
+                    <div class="form-inner">
+                        <!-- Login Form -->
+                        <form id="loginForm" method="post" asp-controller="AddAdminLibrary" asp-action="Login" class="login">
+                            <div class="field">
+                                <input type="text" id="LoginEmail" name="Email" placeholder="Email Address" required>
+                                <span id="LoginEmailError" class="text-danger"></span>
+                            </div>
+                            <div class="field">
+                                <input type="password" id="LoginPassword" name="Password" placeholder="Password" required>
+                                <span id="LoginPasswordError" class="text-danger"></span>
+                            </div>
+                            <div class="pass-link"><a href="#">Forgot password?</a></div>
+                            <div class="field btn">
+                                <div class="btn-layer"></div>
+                                <input type="submit" value="Login">
+                            </div>
+                        </form>
+
+
+                        <!-- Signup Form -->
+                        <form id="signupForm" method="post" asp-controller="AddAdminLibrary" asp-action="AdminLibraryCreate" class="signup">
+                            <div class="field">
+                                <input type="text" id="ConfirmName" name="Name" placeholder="Name" required>
+                                <span id="ConfirmName" class="text-danger"></span>
+                            </div>
+                            <div class="field">
+                                <input type="text" id="SignupEmail" name="Email" placeholder="Email Address" required>
+                                <span id="SignupEmailError" class="text-danger"></span>
+                            </div>
+                            <div class="field">
+                                <input type="password" id="SignupPassword" name="Password" placeholder="Password" required>
+                                <span id="SignupPasswordError" class="text-danger"></span>
+                            </div>
+                           
+                            <div class="field btn">
+                                <div class="btn-layer"></div>
+                                <input type="submit" value="Signup">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/Login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        // Navigation active link highlighting
+        const list = document.querySelectorAll('.list');
+
+        function activeLink() {
+            list.forEach((item) => item.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+        list.forEach((item) => item.addEventListener('click', activeLink));
+
+        // Form validation and submission handling
+        $(document).ready(function () {
+
+
+            function validateLoginForm() {
+                let isValid = true;
+
+                // Clear previous error messages and border styles
+                $('.text-danger').text('');
+                $('input').removeClass('error-border');
+
+                const email = $('#LoginEmail').val().trim();
+                const password = $('#LoginPassword').val().trim();
+
+                if (email === '') {
+                    $('#LoginEmailError').text('Email is required.');
+                    $('#LoginEmail').addClass('error-border');
+                    isValid = false;
+                } else if (!emailRegex.test(email)) {
+                    $('#LoginEmailError').text('Please enter a valid email address.');
+                    $('#LoginEmail').addClass('error-border');
+                    isValid = false;
+                }
+
+                if (password === '') {
+                    $('#LoginPasswordError').text('Password is required.');
+                    $('#LoginPassword').addClass('error-border');
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            function validateSignupForm() {
+                let isValid = true;
+
+                // Clear previous error messages and border styles
+                $('.text-danger').text('');
+                $('input').removeClass('error-border');
+
+                const email = $('#SignupEmail').val().trim();
+                const password = $('#SignupPassword').val().trim();
+                const ConfirmName = $('#ConfirmName').val().trim();
+
+                if (email === '') {
+                    $('#SignupEmailError').text('Email is required.');
+                    $('#SignupEmail').addClass('error-border');
+                    isValid = false;
+                } else if (!emailRegex.test(email)) {
+                    $('#SignupEmailError').text('Please enter a valid email address.');
+                    $('#SignupEmail').addClass('error-border');
+                    isValid = false;
+                }
+
+                if (password === '') {
+                    $('#SignupPasswordError').text('Password is required.');
+                    $('#SignupPassword').addClass('error-border');
+                    isValid = false;
+                }
+
+                if (ConfirmName === '') {
+                    $('#ConfirmNameError').text('Confirm Password is required.');
+                    $('#ConfirmName').addClass('error-border');
+                    isValid = false;
+                } else if (password !== ConfirmName) {
+                    $('#ConfirmName').text('Passwords do not match.');
+                    $('#ConfirmName').addClass('error-border');
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            $('#loginForm').on('submit', function (e) {
+                if (!validateLoginForm()) {
+                    e.preventDefault();
+                }
+            });
+
+            $('#signupForm').on('submit', function (e) {
+                if (!validateSignupForm()) {
+                    e.preventDefault();
+                }
+            });
+
+            // Clear error message and border when input changes
+            $('input').on('input', function () {
+                const id = $(this).attr('id');
+                $(`#${id}Error`).text('');
+                $(this).removeClass('error-border');
+            });
+        });
+    </script>
+</body>
+</html>

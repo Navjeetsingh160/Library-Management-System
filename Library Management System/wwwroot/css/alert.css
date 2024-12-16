@@ -1,0 +1,146 @@
+﻿.login-dark {
+    height: 1000px;
+    background-image: url(/images/Library-Management.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+    .login-dark form {
+        max-width: 320px;
+        width: 90%;
+        background-color: #1e2833;
+        padding: 40px;
+        border-radius: 4px;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 35%;
+        left: 25%;
+        color: #fff;
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-dark .illustration {
+        text-align: center;
+        padding: 15px 0 20px;
+        font-size: 100px;
+        color: #2980ef;
+    }
+
+    .login-dark form .form-control {
+        background: none;
+        border: none;
+        border-bottom: 1px solid #434a52;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        color: inherit;
+    }
+
+    .login-dark form .btn-primary {
+        background: #214a80;
+        border: none;
+        border-radius: 4px;
+        padding: 11px;
+        box-shadow: none;
+        margin-top: 26px;
+        text-shadow: none;
+        outline: none;
+    }
+
+        .login-dark form .btn-primary:hover,
+        .login-dark form .btn-primary:active {
+            background: #214a80;
+            outline: none;
+        }
+
+    .login-dark form .forgot {
+        display: block;
+        text-align: center;
+        font-size: 12px;
+        color: #6f7a85;
+        opacity: 0.9;
+        text-decoration: none;
+    }
+
+        .login-dark form .forgot:hover,
+        .login-dark form .forgot:active {
+            opacity: 1;
+            text-decoration: none;
+        }
+
+    .login-dark form .btn-primary:active {
+        transform: translateY(1px);
+    }
+
+/* Notification Styles */
+.note {
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background-color: #9b59b6;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.note--success {
+    background-color: #27ae60;
+}
+
+.note--error {
+    background-color: #e74c3c;
+    width: 24%;
+    left: 74%;
+    top: 11%;
+}
+
+.note__icon,
+.note__text {
+    padding: 24px;
+}
+
+.note__icon {
+    min-width: 80px;
+    text-align: center;
+    font-size: 32px;
+  /* // background-color: rgba(0, 0, 0, 0.25);*/
+}
+
+.note__text {
+    padding-right: 48px;
+}
+
+.note__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 29px;
+    line-height: 30px;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: all 0.25s;
+    border-radius: 50%;
+}
+
+    .note__close:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+
+.note:hover .note__close {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

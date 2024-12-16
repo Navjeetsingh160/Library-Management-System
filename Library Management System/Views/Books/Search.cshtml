@@ -1,0 +1,48 @@
+﻿@model List<Library_Management_System.DTO.BookDTO>
+
+@{
+    ViewData["Title"] = "Search Books";
+    var titleQuery = Context.Request.Query["title"].ToString();
+}
+
+<h1>Search Books</h1>
+
+<form method="get" action="@Url.Action("Search", "Books")">
+    <div class="form-group">
+        <input type="text" class="form-control" name="title" placeholder="Enter book title" value="@titleQuery" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.ISBN</td>
+                    <td>@book.Quantity</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Books", new { id = book.Id })" class="btn btn-info">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No books found.</p>
+}
